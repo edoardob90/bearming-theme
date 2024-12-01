@@ -1,11 +1,11 @@
 /*
   Name: Bearming
-  Version: 1.2.7
-  About: birming.com/bearming
+  Version: 1.4.4-c.1
+  About: birming.com/bearming, with a few personal tweaks
 */
 
 /* Fonts
- * imports are handled in the <header> with <link> tags to avoid the use of @import
+ * Imports are handled in the <header> with <link> tags to avoid the use of @import
  */
 :root {
   --font-family-emoji: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
@@ -16,19 +16,21 @@
 
 /* Colors: Light mode */
 :root {
-  --background-color: #fafafa;
-  --accent-color: #e3e3e3;
-  --text-color: #1a1a1a;
-  --link-color: #005599;
+  --background-color: #ffffff;
+  --accent-color: #cfe8fe;
+  --text-color: #333333;
+  --link-color: #0055cc;
+  --visited-color: #663399;
 }
 
 /* Colors: Dark mode */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background-color: #1a1a1a;
-    --accent-color: #224455;
-    --text-color: #fafafa;
-    --link-color: #99ccee;
+    --background-color: #001828;
+    --accent-color: #114466;
+    --text-color: #f2f2f2;
+    --link-color: #99ccff;
+    --visited-color: #cc99ff;
   }
 }
 
@@ -78,20 +80,23 @@ main h1 {
   margin: 0 0 5px;
   font-size: 1.9em;
   font-weight: 900;
+  letter-spacing: -0.5px;
 }
 
 /* Links */
-a {
-  color: var(--link-color);
-  text-decoration: underline;
-}
+a,
 main a {
+  color: var(--link-color);
   text-decoration: underline;
 }
 a.title,
 .title:hover {
   color: var(--text-color);
   text-decoration: none;
+}
+.blog-posts a:visited,
+.post main a:visited {
+  color: var(--visited-color);
 }
 
 /* Form elements */
@@ -101,8 +106,8 @@ textarea,
 select {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   font: inherit;
+  box-sizing: border-box;
 }
 legend {
   margin: 20px 0;
@@ -141,7 +146,7 @@ input[type="reset"] {
 }
 ::placeholder {
   color: var(--text-color);
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 /* Misc elements */
@@ -162,11 +167,7 @@ hr {
   border: 0;
   border: 1px dashed var(--accent-color);
 }
-img,
-picture,
-video,
-canvas,
-svg {
+img {
   display: block;
   max-width: 100%;
   margin: 0 0 25px;
@@ -181,8 +182,9 @@ blockquote {
 
 /* Navigation */
 nav {
-  margin: 0 0 30px;
+  margin: 5px 0 30px;
   font-family: var(--font-secondary);
+  line-height: 2.3;
 }
 nav p {
   display: inline;
@@ -192,11 +194,11 @@ nav a {
   margin-right: 6px;
   padding: 6px 12px;
   font-size: 0.8em;
+  font-weight: bold;
   color: var(--link-color);
-  border: 1px solid;
-  border-color: var(--link-color);
-  border-radius: 15px;
   text-decoration: none;
+  border: 1px solid var(--link-color);
+  border-radius: 15px;
 }
 nav a:hover {
   background: var(--accent-color);
@@ -204,10 +206,10 @@ nav a:hover {
 
 /* Footer */
 footer {
-  padding: 25px 0;
+  padding: 20px 0 !important;
   font-family: var(--font-secondary);
-  text-align: center;
   font-size: 0.8em;
+  text-align: center;
 }
 footer a {
   text-decoration: none;
@@ -215,12 +217,8 @@ footer a {
 footer strong {
   font-size: 1.1em;
 }
-.home footer hr,
-.blog footer hr {
-  display: none;
-}
 
-/* Blog list */
+/* Blog list and post */
 ul.blog-posts {
   margin: 50px 0 20px;
   padding: 0;
@@ -237,7 +235,8 @@ ul.blog-posts li {
 ul.blog-posts li span {
   order: 2;
 }
-ul.blog-posts li:last-child {
+ul.blog-posts li:last-child,
+.post main {
   border-bottom: 1px solid var(--accent-color);
 }
 ul.blog-posts li a {
@@ -403,21 +402,4 @@ ul.embedded.blog-posts li a {
 .upvote-button[disabled]::before {
   content: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZjQwMTMiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1oZWFydCI+PHBhdGggZD0iTTE5IDE0YzEuNDktMS40NiAzLTMuMjEgMy01LjVBNS41IDUuNSAwIDAgMCAxNi41IDNjLTEuNzYgMC0zIC41LTQuNSAyLTEuNS0xLjUtMi43NC0yLTQuNS0yQTUuNSA1LjUgMCAwIDAgMiA4LjVjMCAyLjMgMS41IDQuMDUgMyA1LjVsNyA3WiIvPjwvc3ZnPg==);
   font-size: 1.5em;
-}
-
-/* Search */
-.blog input {
-  width: 200px;
-  margin: 20px 0;
-  padding: 6px 12px;
-  font-family: var(--font-secondary);
-  font-size: 0.8em;
-  color: #1a1a1a;
-  background: #fafafa;
-  border: 2px solid var(--link-color);
-  border-radius: 18px;
-}
-.blog ::placeholder {
-  color: currentColor;
-  opacity: inherit;
 }
