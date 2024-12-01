@@ -1,0 +1,269 @@
+/*
+  Name: Bearming
+  Version: 1.4.4
+  About: birming.com/bearming
+*/
+
+/* Import fonts from fonts.bunny.net */
+@import url("https://fonts.bunny.net/css?family=atkinson-hyperlegible:400,400i,700,700i|inter:400,700,900");
+
+:root {
+  --font-main: "Atkinson Hyperlegible", sans-serif;
+  --font-secondary: "Inter", sans-serif;
+}
+
+/* Colors: Light mode */
+:root {
+  --background-color: #ffffff;
+  --accent-color: #cfe8fe;
+  --text-color: #333333;
+  --link-color: #0055cc;
+  --visited-color: #663399;
+}
+
+/* Colors: Dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #001828;
+    --accent-color: #114466;
+    --text-color: #f2f2f2;
+    --link-color: #99ccff;
+    --visited-color: #cc99ff;
+  }
+}
+
+/* Global resets */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Basic styles */
+body {
+  margin: 10px auto;
+  padding: 20px;
+  max-width: 680px;
+  font-family: var(--font-main);
+  font-size: 1.15em;
+  line-height: 1.5;
+  text-align: left;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-secondary);
+}
+h1 {
+  font-size: 1.8em;
+}
+.title h1 {
+  display: inline-block;
+  margin: 0;
+  font-size: 1.9em;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+}
+
+/* Links */
+a,
+main a {
+  color: var(--link-color);
+  text-decoration: underline;
+}
+a.title,
+.title:hover {
+  color: var(--text-color);
+  text-decoration: none;
+}
+.blog-posts a:visited,
+.post main a:visited {
+  color: var(--visited-color);
+}
+
+/* Form elements */
+input,
+button,
+textarea,
+select {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  box-sizing: border-box;
+}
+legend {
+  margin: 20px 0;
+  font-weight: bold;
+}
+label {
+  display: block;
+  font-weight: bold;
+}
+input,
+textarea {
+  margin: 0 0 10px;
+  padding: 5px 10px;
+  color: var(--text-color);
+  background: var(--accent-color);
+  border: 2px solid var(--link-color);
+  border-radius: 5px;
+}
+input {
+  width: 55%;
+}
+textarea {
+  width: 95%;
+}
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  margin: 0 0 20px;
+  padding: 7px;
+  font-family: var(--font-secondary);
+  font-weight: bold;
+  color: var(--background-color);
+  background: var(--link-color);
+  border-radius: 5px;
+  cursor: pointer;
+}
+::placeholder {
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+/* Misc elements */
+time {
+  font-family: var(--font-secondary);
+  font-style: normal;
+  font-size: 0.8em;
+}
+p time {
+  display: block;
+  margin: -15px 0 25px;
+}
+table {
+  width: 100%;
+}
+hr {
+  border: 0;
+  border: 1px dashed var(--accent-color);
+}
+img {
+  display: block;
+  max-width: 100%;
+  margin: 0 0 25px;
+}
+blockquote {
+  margin: 25px 0;
+  padding: 2px 25px;
+  font-style: italic;
+  background: var(--accent-color);
+  border-radius: 10px;
+}
+
+/* Navigation */
+nav {
+  margin: 5px 0 30px;
+  font-family: var(--font-secondary);
+  line-height: 2.3;
+}
+nav p {
+  display: inline;
+}
+nav a {
+  margin-right: 6px;
+  padding: 6px 12px;
+  font-size: 0.8em;
+  font-weight: bold;
+  color: var(--link-color);
+  text-decoration: none;
+  border: 1px solid var(--link-color);
+  border-radius: 15px;
+}
+nav a:hover {
+  background: var(--accent-color);
+}
+
+/* Footer */
+footer {
+  padding: 20px 0 !important;
+  font-family: var(--font-secondary);
+  font-size: 0.8em;
+  text-align: center;
+}
+footer a {
+  text-decoration: none;
+}
+footer strong {
+  font-size: 1.1em;
+}
+
+/* Blog list and post */
+ul.blog-posts {
+  margin: 40px 0 20px;
+  padding: 0;
+}
+ul.blog-posts li {
+  overflow: hidden;
+  padding: 20px 0;
+  border-top: 1px solid var(--accent-color);
+}
+ul.blog-posts li:last-child,
+.post main {
+  border-bottom: 1px solid var(--accent-color);
+}
+ul.blog-posts li a {
+  float: left;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: calc(100% - 110px);
+}
+ul.blog-posts li time {
+  float: right;
+  margin: 3px 0 0;
+}
+.post main {
+  padding: 0 0 35px;
+}
+
+/* Misc styles */
+.inline {
+  width: auto !important;
+}
+.code,
+.highlight {
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  padding: 1px 15px;
+  overflow-x: auto;
+  background-color: var(--accent-color);
+  border-radius: 3px;
+}
+.tags a {
+  display: inline-block;
+  margin: 5px 5px 0 0;
+  padding: 4px 9px;
+  font-size: 0.8em;
+  text-decoration: none;
+  background: var(--accent-color);
+  border-radius: 5px;
+}
+
+/* Add-Ons (https://birming.com/bearming-add-ons) */
