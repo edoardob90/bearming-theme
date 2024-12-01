@@ -248,6 +248,9 @@ ul.blog-posts li a {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.post main {
+  padding: 0 0 35px;
+}
 
 /* Misc styles */
 .inline {
@@ -268,7 +271,7 @@ ul.blog-posts li a {
   display: inline-block;
   margin: 15px 5px 0 0;
   padding: 4px 9px;
-  font-size: 1em;
+  font-size: 1rem;
   color: var(--text-color);
   background: var(--accent-color);
   border-radius: 5px;
